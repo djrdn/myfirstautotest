@@ -4,8 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.time.Duration;
 
 public class TCRF001 {
     @Test
@@ -17,11 +20,8 @@ public class TCRF001 {
         WebElement myAccountDropMenu = driver.findElement(By.xpath("//span[text()=\"My Account\"]"));
         myAccountDropMenu.click();
 
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
         WebElement registerOption = driver.findElement(By.linkText("Register"));//это способ поиска элемента по полному тексту ссылки
         registerOption.click();
 
